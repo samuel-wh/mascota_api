@@ -1,0 +1,116 @@
+{% extends 'base.html' %}{% load i18n widget_tweaks %}{% load static %}
+{% block title %} Agregar Mascota{% endblock title %}+
+{% block page_title %}
+<div class="card-row">
+    <i class="fa fa-add"></i> Agregar Mascota
+</div>
+{% endblock page_title %}
+{% block content %}
+<div class="row card-row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form id="" class="g-3 needs-validation" novalidate method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.foto.id_for_label }}">
+                            {{ form.foto.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.foto class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{form.nombre.id_for_label }}">
+                            {{ form.nombre.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.nombre class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.sexo.id_for_label }}">
+                            {{ form.sexo.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.sexo class="form-control form-select" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.edad.id_for_label }}">
+                            {{ form.edad.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.edad class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row datepicker-input">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.fecha_rescate.id_for_label }}">
+                            {{ form.fecha_rescate.label }}
+                        </label>
+                        <div class="col-sm-8 input-group-prepend">
+                            {% render_field form.fecha_rescate class="form-control" %}
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <div class="invalid-feedback">
+                                {{ form.fecha_rescate.errors }}
+                                {{ form.fecha_rescate.field_errors }}
+                            </div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.persona.id_for_label }}">
+                            {{ form.persona.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.persona class="form-control form-select" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="control-label col-sm-4 col-form-label" for="{{ form.vacuna.id_for_label }}">
+                            {{ form.vacuna.label }}
+                        </label>
+                        <div class="col-sm-8">
+                            {% render_field form.vacuna class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="text-center col-12">
+                        <button type="submit" name="form-stripe" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i>
+                            {% translate "Guardar" %}
+                        </button>
+                        <a class="btn" href="{{ url_cancelar }}">{% translate "Cancelar" %}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block extra_resources %}
+<script src="{% static 'js/validate.js' %}" type="application/javascript"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    $('#id_fecha_rescate').datepicker({
+        language: "es",
+        format: 'dd/mm/yyyy'
+    });
+});
+</script>
+{% endblock extra_resources %}

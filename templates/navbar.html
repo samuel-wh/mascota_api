@@ -1,0 +1,48 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light" aria-current="page">
+  <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="container d-flex justify-content-center">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav align-items-center mx-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link mx-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="true" aria-haspopup="true"><i class="fas fa-plus-circle pe-2"></i>
+                Nueva Mascota
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'apiview-mascota-crear' %}">ApiView</a></li>
+                <li><a class="dropdown-item" href="{% url 'viewset-mascota-crear' %}">ViewSet</a></li>
+                <li><a class="dropdown-item" href="{% url 'genericview-mascota-crear' %}">GenericView</a></li>
+                <li><a class="dropdown-item" href="{% url '@api_view-mascota-crear' %}">@api_vew</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="{% url 'persona-nuevo' %}"><i class="fas fa-people-group pe-2"></i>Nueva
+                Persona</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link mx-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="true" aria-haspopup="true"><i class="fas fa-plus-circle pe-2"></i>
+                Lista de Mascotas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'apiview-mascota-lista' %}">ApiView</a></li>
+                <li><a class="dropdown-item" href="{% url 'viewset-mascota-lista' %}">ViewSet</a></li>
+                <li><a class="dropdown-item" href="{% url 'genericview-mascota-lista' %}">GenericView</a></li>
+                <li><a class="dropdown-item" href="{% url '@api_view-mascota-lista' %}">@api_vew</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Navbar -->

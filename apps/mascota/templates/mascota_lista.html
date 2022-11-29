@@ -1,0 +1,84 @@
+{% extends 'base.html' %}{% load i18n widget_tweaks %}{% load static %} {% block content %}
+<br>
+<div class="row">
+    <br>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>Sexo</td>
+                    <td>Edad</td>
+                    <td>Fecha de rescate</td>
+                    <td>Adoptante</td>
+                    <td>Acciones</td>
+                </tr>
+                <thead>
+                <tbody>
+                    <!-- Validamos si tenemos informacion de las mascotas -->
+                    {% if mascota %}
+                    <!-- Bucle for para listar todas las mascotas -->
+                    {% for mascota in mascota %}
+                    <tr>
+                        <!-- Accedemos a los atributos de las mascotas -->
+                        <td>{{mascota.id}}</td>
+                        <td>{{mascota.nombre}}</td>
+                        {% if mascota.sexo == 0 %}
+                        <td>Macho</td>
+                        {% else %}
+                        <td>Hembra</td>
+                        {% endif %}
+                        <td>{{mascota.edad}}</td>
+                        <td>{{mascota.fecha_rescate}}</td>
+                        <td>{{mascota.persona.nombre}}</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary mx-2 dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="true" aria-haspopup="true">
+                                <i class="fas fa-edit pe-1"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                        href="{% url 'apiview-mascota-actualizar' mascota.id %}">ApiView</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{% url 'viewset-mascota-actualizar' mascota.id %}">ViewSet</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{% url 'genericview-mascota-actualizar' mascota.id %}">GenericView</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url '@api_view-mascota-actualizar' mascota.id %}">
+                                    @api_vew</a>
+                                </li>
+                            </ul>
+                            <a class="btn btn-danger mx-2 dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="true" aria-haspopup="true">
+                                <i class="fas fa-trash pe-1"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                        href="{% url 'apiview-mascota-elimar' mascota.id %}">ApiView</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{% url 'viewset-mascota-elimar' mascota.id %}">ViewSet</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{% url 'genericview-mascota-elimar' mascota.id %}">GenericView</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url '@api_view-mascota-elimar' mascota.id %}">
+                                    @api_vew</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <h1> No hay registros de mascotas </h1>
+                    {% endif %}
+                </tbody>
+        </table>
+
+    </div>
+
+</div>
+{% endblock content %}

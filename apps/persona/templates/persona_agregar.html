@@ -1,0 +1,91 @@
+{% extends 'base.html' %}{% load i18n widget_tweaks %}{% load static %}
+{% block title %} Agregar Persona{% endblock title %}
+{% block page_title %}
+<div class="card-row">
+    <i class="fa fa-add"></i> Agregar Persona
+</div>
+{% endblock page_title %}
+{% block content %}
+<div class="row card-row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form id="" class="row g-3 needs-validation" novalidate method="post">
+                    {% csrf_token %}
+                    <div class="form-group col-md-4">
+                        <label class="control-label form-label" for="{{ persona_form.nombre.id_for_label }}">
+                            {{ persona_form.nombre.label }}
+                        </label>
+                        <div>
+                            {% render_field persona_form.nombre class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label form-label" for="{{persona_form.apellidos.id_for_label }}">
+                            {{ persona_form.apellidos.label }}
+                        </label>
+                        <div>
+                            {% render_field persona_form.apellidos class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label control-label-required" for="{{ persona_form.edad.id_for_label }}">
+                            {{ persona_form.edad.label }}
+                        </label>
+                        <div class="">
+                            {% render_field persona_form.edad class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label control-label-required" for="{{ persona_form.telefono.id_for_label }}">
+                            {{ persona_form.telefono.label }}
+                        </label>
+                        <div class="">
+                            {% render_field persona_form.telefono class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label control-label-required" for="{{ persona_form.email.id_for_label }}">
+                            {{ persona_form.email.label }}
+                        </label>
+                        <div class="">
+                            {% render_field persona_form.email class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label control-label-required" for="{{ persona_form.domicilio.id_for_label }}">
+                            {{ persona_form.domicilio.label }}
+                        </label>
+                        <div class="">
+                            {% render_field persona_form.domicilio class="form-control" %}
+                            <div class="invalid-feedback">Please choose a username.</div>
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                    </div>
+                    <div class="text-center col-12">
+                        <button type="submit" name="form-stripe" class="btn btn-primary">
+                            <i class="fa fa-floppy-o"></i>
+                            {% translate "Guardar" %}
+                        </button>
+                        <a class="btn" href="#">{% translate "Cancelar" %}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block extra_resources %}
+<script src="{% static 'js/validate.js' %}" type="application/javascript"></script>
+{% endblock extra_resources %}
